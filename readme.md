@@ -22,7 +22,7 @@ console.log('Reading file from first argument: ' + process.argv[2]);
 console.log(amdetective(fs.readFileSync(process.argv[2]).toString()));
 ````
 
-Now, let's run it on a bunch of examples to see some output:
+Now, let's run it on a bunch of examples to see some output. You can also run this command on your own files to get more realistic examples.
 
 ## Definition Functions with Dependencies (simple.js)
 
@@ -81,7 +81,7 @@ Note how named modules are treated differently - this is just something that the
 
 Given some source body `src`, return an array of all the `require()` call arguments detected by AMD/r.js.
 
-The options parameter `opts` is passed along to `parse.recurse()`.
+The options parameter `opts` is passed along to `parse.recurse()` in [lib/parse.js](https://github.com/mixu/amdetective/blob/master/lib/parse.js#L196). This is normally the build config options if it is passed.
 
 # License
 
