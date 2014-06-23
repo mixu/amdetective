@@ -1,18 +1,26 @@
 {
   "name": "amdetective",
   "version": "0.0.1",
-  "description": "Like node-detective, but for AMD/r.js files",
+  "description": "Like node-detective, but for AMD/r.js files. Finds all calls to `require()` in AMD modules by walking the AST.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "keywords": [
+    "require",
+    "source",
+    "analyze",
+    "ast",
+    "amd",
+    "detective"
+  ],
   "repository": {
-    "type" : "git",
-    "url" : "git://github.com/mixu/amdetective.git"
+    "type": "git",
+    "url": "git://github.com/mixu/amdetective.git"
   },
   "author": "Mikito Takada <mikito.takada@gmail.com> (http://mixu.net/)",
   "license": "BSD",
   "dependencies": {
-    "esprima": "~1.0.4"
+    "esprima": "~1.2.2"
   }
 }

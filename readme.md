@@ -1,6 +1,6 @@
 # amdetective
 
-Find all calls to `require()` in AMD modules.
+Find all calls to `require()` in AMD modules by walking the AST.
 
 This module uses code extracted from [r.js](https://github.com/jrburke/r.js) rather than trying to write it's own version of r.js parsing. It depends on esprima (but not r.js).
 
@@ -12,27 +12,7 @@ npm install amdetective
 
 # example
 
-## simple.js
-
-````js
-require(['module1', 'path/to/module2'], function(a, b){
-  // ...
-});
-````
-
-## simple2.js
-
-````js
-define(function(require) {
-  var a = require('some/file'),
-      b = require('json!foo/bar');
-  // ...
-});
-````
-
-## detect.js
-
-This example file accepts a target path from command line so you can use it to inspect your own files as well:
+First, create `detect.js` which is just a four line CLI wrapper around `amdetective`:
 
 ````js
 var fs = require('fs'),
@@ -42,23 +22,58 @@ console.log('Reading file from first argument: ' + process.argv[2]);
 console.log(amdetective(fs.readFileSync(process.argv[2]).toString()));
 ````
 
-Running: `node detect.js simple.js`
+Now, let's run it on a bunch of examples to see some output:
 
-Output:
+## Definition Functions with Dependencies (simple.js)
+
+````js
+require(['module1', 'path/to/module2'], function(a, b){
+  // ...
+});
+````
+
+Running `node detect.js simple.js` produces:
 
 ````
 Reading file from first argument: simple.js
 [ 'module1', 'path/to/module2' ]
 ````
 
-Running: `node detect.js simple2.js`
+## Simplified CommonJS Wrapper (simple2.js)
 
-Output:
+````js
+define(function(require) {
+  var a = require('some/file'),
+      b = require('json!foo/bar');
+  // ...
+});
+````
+
+Running `node detect.js simple2.js` produces:
 
 ````
 Reading file from first argument: simple2.js
 [ 'require', 'some/file', 'json!foo/bar' ]
 ````
+
+## Named module (named.js)
+
+````js
+define("foo/title",
+    ["my/cart", "my/inventory"],
+    function(cart, inventory) {
+   }
+);
+````
+
+Running `node detect.js simple2.js` produces:
+
+````
+Reading file from first argument: named.js
+[ { name: 'foo/title', deps: [ 'my/cart', 'my/inventory' ] } ]
+````
+
+Note how named modules are treated differently - this is just something that the underlying resolution code does so be prepared to deal with it.
 
 # Methods
 
