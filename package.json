@@ -21,6 +21,6 @@
   "author": "Mikito Takada <mikito.takada@gmail.com> (http://mixu.net/)",
   "license": "BSD",
   "dependencies": {
-    "esprima-fb": "^15001.1001.0-dev-harmony-fb"
+    "esprima": "~2.7.0"
   }
 }

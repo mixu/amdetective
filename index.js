@@ -1,4 +1,4 @@
-var esprima = require('esprima-fb'),
+var esprima = require('esprima'),
     parse = require('./lib/parse.js');
 
 function find(fileContents, options) {
