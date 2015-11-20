@@ -73,6 +73,16 @@ describe('amdetective', function() {
     assert.deepEqual(amdetective(input), [ { name: 'foo/title', deps: [ 'my/cart', 'my/inventory' ] } ]);
   });
 
+  it('works on a named module with relative module names inside define()', function() {
+    var input = [
+      'define("foo/title", function() {',
+      '    var a = require("a");',
+      '    var b = require("b");',
+      '});'
+    ].join('\n');
+    assert.deepEqual(amdetective(input), [ { name: 'foo/title', deps: [ 'a', 'b' ] } ]);
+  });
+
   it('works with Relative module names inside define()', function() {
     var input = [
       'define(["require", "./relative/name"], function(require) {',
