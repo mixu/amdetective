@@ -123,5 +123,14 @@ describe('amdetective', function() {
     ].join('\n');
     assert.deepEqual(amdetective(input),  [ 'require' ]);
   });
-
+  it('is able to detect a require.config block', function () {
+    var input = [
+      'require.config({',
+      '  paths: {',
+      '    myModule: "path/to/my/module"',
+      '  }',
+      '});'
+    ].join('\n');
+    assert.deepEqual(amdetective.parse.findConfig(input).config,  { paths: { myModule: 'path/to/my/module'} });
+  })
 });

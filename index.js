@@ -43,3 +43,4 @@ function findSimple(fileContents, options) {
 
 module.exports = findSimple;
 module.exports.find = find;
+module.exports.parse = parse;
