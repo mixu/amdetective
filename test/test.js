@@ -73,6 +73,11 @@ describe('amdetective', function() {
     assert.deepEqual(amdetective(input), [ { name: 'foo/title', deps: [ 'my/cart', 'my/inventory' ] } ]);
   });
 
+  it('works on a Module with a name, no dependency and arrow function as factory', function() {
+    var input = 'define("foo/title", () => { /* Define foo/title object in here. */ });';
+    assert.deepEqual(amdetective(input), [ { name: 'foo/title', deps: [] } ]);
+  });
+
   it('works on a named module with relative module names inside define()', function() {
     var input = [
       'define("foo/title", function() {',
