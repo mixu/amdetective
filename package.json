@@ -21,6 +21,9 @@
   "author": "Mikito Takada <mikito.takada@gmail.com> (http://mixu.net/)",
   "license": "BSD",
   "dependencies": {
-    "esprima": "~2.7.0"
+    "esprima": "3.1.0"
+  },
+  "devDependencies": {
+    "mocha": "^3.1.2"
   }
 }
