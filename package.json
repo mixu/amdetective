@@ -1,6 +1,6 @@
 {
   "name": "amdetective",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "description": "Like node-detective, but for AMD/r.js files. Finds all calls to `require()` in AMD modules by walking the AST.",
   "main": "index.js",
   "scripts": {
