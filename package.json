@@ -19,7 +19,7 @@
     "url": "git://github.com/mixu/amdetective.git"
   },
   "author": "Mikito Takada <mikito.takada@gmail.com> (http://mixu.net/)",
-  "license": "BSD",
+  "license": "BSD-3-Clause",
   "dependencies": {
     "esprima": "3.1.0"
   },
